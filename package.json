@@ -1,0 +1,27 @@
+{
+  "homepage": "http://praveenoruganti.github.io/praveenoruganti-express-js/",
+  "name": "praveenoruganti-express-js",
+  "author": "Praveen Oruganti",
+  "description": "Express JS",
+  "keywords": [
+    "praveenoruganti",
+    "expressjs"
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.14.0",
+    "cors": "^2.8.5"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "4.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praveenoruganti/praveenoruganti-express-js.git"
+  }
+}
