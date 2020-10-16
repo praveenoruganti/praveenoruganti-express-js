@@ -27,4 +27,4 @@ app.post("/name", function (req, res) {
 
 app.use(express.static("public"));
 
-app.listen(3000, () => console.log("Server ready"));
+app.listen(process.env.PORT || 3000, () => console.log("Server ready"));
