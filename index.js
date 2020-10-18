@@ -1,9 +1,14 @@
-const express = require("express");
+const express = require('express');
+const logger = require('./routes/middleware/Logger');
 const app = express();
-const mysql = require('mysql');
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(function middleware(req, res, next) {
+  console.log(req.method + " " + req.path + " - " + req.ip);
+  next();
+});
 
 // app.get("/", (req, res) => res.send("Hello World!"));
 
@@ -26,19 +31,8 @@ app.post("/name", function (req, res) {
   res.json({ name: string });
 });
 
-require("./mySQL/query")(app);
-
-const sqlParams = {
-  connectionLimit: 1,
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "praveendb",
-};
-
-let connection = mysql.createPool(sqlParams);
-module.exports.connection = connection;
+require("./routes/mysql/query")(app);
+app.use('/api/v1_0/members', require('./routes/api/members'))
 
 app.get("/info", (req, res) => {
   res.send(" App is up and running....");
@@ -46,4 +40,6 @@ app.get("/info", (req, res) => {
 
 app.use(express.static("public"));
 
-app.listen(process.env.PORT || 3000, () => console.log("Server ready"));
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
