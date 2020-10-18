@@ -1,9 +1,12 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const logger = require('./routes/middleware/Logger');
 const app = express();
-app.use(express.json());
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cookieParser());  
 
 app.use(function middleware(req, res, next) {
   console.log(req.method + " " + req.path + " - " + req.ip);
@@ -33,6 +36,8 @@ app.post("/name", function (req, res) {
 
 require("./routes/mysql/query")(app);
 app.use('/api/v1_0/members', require('./routes/api/members'))
+
+require("./routes/cookies/cookie")(app);
 
 app.get("/info", (req, res) => {
   res.send(" App is up and running....");
