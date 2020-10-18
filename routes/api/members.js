@@ -2,8 +2,6 @@ const express = require('express');
 const members = require('../../Members')
 const uuid = require('uuid')
 
-
-
 const router = express.Router()
 
 // get all members
@@ -11,7 +9,6 @@ router.get('/', (req, res) => res.json(members))
 
 // get a specific elem
 router.get('/:id', (req, res) => {
-
     const found = members.some((member) => member.id === parseInt(req.params.id))
     if (found) {
         res.json(members.filter(member => member.id === parseInt(req.params.id)))
@@ -19,13 +16,6 @@ router.get('/:id', (req, res) => {
         res.status(400).json({ msg: `no member with the id of ${req.params.id}` })
     }
 })
-
-
-
-// router.post('/', (req, res) => {
-//     res.send(req.body)
-// })
-
 
 //create a member
 router.post('/', (req, res) => {
@@ -44,11 +34,9 @@ router.post('/', (req, res) => {
 
 })
 
-
 //update member 
-
 router.put('/:id', (req, res) => {
-    // chech to see if the member exists
+    // check to see if the member exists
     const found = members.some((member) => member.id === parseInt(req.params.id))
     if (found) {
         const updMember = req.body
@@ -66,7 +54,6 @@ router.put('/:id', (req, res) => {
 })
 
 //Delete member
-
 router.delete('/:id', (req, res) => {
 
     const found = members.some((member) => member.id === parseInt(req.params.id))
@@ -77,6 +64,5 @@ router.delete('/:id', (req, res) => {
         res.status(400).json({ msg: `no member with the id of ${req.params.id}` })
     }
 })
-
 
 module.exports = router;
