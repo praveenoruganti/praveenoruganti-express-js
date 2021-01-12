@@ -1,3 +1,5 @@
+![screenshot of the app](https://raw.githubusercontent.com/praveenorugantitech/praveenorugantitech-express-js/master/tech.PNG)
+
 # Praveen Oruganti Tech Express JS Course
 
 - [Introduction](https://praveenorugantitech.blogspot.com/2019/11/all-about-express-js.html){:target="_blank"}
